@@ -3,24 +3,24 @@ module RecordWithOperator
     def self.included(base)
       base.extend(ClassMethods)
     end
-    
+
     private
 
     def set_creator
-      send("#{RecordWithOperator.creator_column}=", operator.try(:id))
+      send("#{RecordWithOperator.creator_column}=", rwo_operator.try(:id))
     end
 
     def set_updater
       return unless changed? # no use setting updating_by when it's not changed
-      return unless operator # avoid changing value to be nil
-      send("#{RecordWithOperator.updater_column}=", operator.id)
+      return unless rwo_operator # avoid changing value to be nil
+      send("#{RecordWithOperator.updater_column}=", rwo_operator.id)
     end
 
     def update_deleter
       return if frozen?
-      return unless operator
-      self.class.update_all("#{RecordWithOperator.deleter_column} = #{operator.id}", ["#{self.class.primary_key} = ?", id])
-      send("#{RecordWithOperator.deleter_column}=", operator.id)
+      return unless rwo_operator
+      self.class.update_all("#{RecordWithOperator.deleter_column} = #{rwo_operator.id}", ["#{self.class.primary_key} = ?", id])
+      send("#{RecordWithOperator.deleter_column}=", rwo_operator.id)
     end
 
     module ClassMethods

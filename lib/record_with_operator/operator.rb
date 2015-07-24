@@ -1,11 +1,11 @@
 module RecordWithOperator
   module Operator
-    def operator=(o)
-      Thread.current[:operator] = o
+    def rwo_operator=(o)
+      Thread.current[:rwo_operator] = o
     end
 
-    def operator
-      Thread.current[:operator]
+    def rwo_operator
+      Thread.current[:rwo_operator]
     end
   end
 end
