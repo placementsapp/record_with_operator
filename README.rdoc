@@ -1,5 +1,7 @@
 = RecordWithOperator
 
+test arbitrary edit.
+
 == Introduction
 
 RecordWithOperator is a gem that makes your active record models to be saved or logically deleted with created_by, updated_by, deleted_by (column names can be changed).
